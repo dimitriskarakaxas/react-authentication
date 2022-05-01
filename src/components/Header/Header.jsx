@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 import AuthContext from "../../context/auth-context";
 
@@ -17,7 +17,9 @@ const Header = () => {
 
   return (
     <header className="text-white bg-blue-500 px-8 py-4 mb-12 flex justify-between items-center w-11/12 max-w-6xl mx-auto">
-      <h1 className="text-2xl font-bold">React Auth</h1>
+      <h1 className="text-2xl font-bold">
+        <Link to="/">React Auth</Link>
+      </h1>
       <nav>
         <ul className="flex items-center">
           {!isLoggedIn && (
@@ -29,7 +31,7 @@ const Header = () => {
           )}
           {isLoggedIn && (
             <li className="ml-4">
-              <NavLink to="/" className={styleNavLink}>
+              <NavLink to="/profile" className={styleNavLink}>
                 Profile
               </NavLink>
             </li>
