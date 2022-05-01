@@ -22,12 +22,12 @@ const AuthForm = () => {
     const enteredPassword = passwordInputRef.current.value;
 
     setIsLoading(true);
-    const FIREBASE_API_KEY = "AIzaSyARAUfYgmC_og5GR0MnkTrAkJTDgdxkNS0";
+
     let url;
     if (isLogin) {
-      url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${FIREBASE_API_KEY}`;
+      url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.REACT_APP_FIREBASE_API_KEY}`;
     } else {
-      url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${FIREBASE_API_KEY}`;
+      url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.REACT_APP_FIREBASE_API_KEY}`;
     }
 
     fetch(url, {

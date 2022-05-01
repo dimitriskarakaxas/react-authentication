@@ -4,8 +4,12 @@ import { NavLink } from "react-router-dom";
 import AuthContext from "../../context/auth-context";
 
 const Header = () => {
-  const { isLoggedIn } = useContext(AuthContext);
-  console.log(isLoggedIn);
+  const authCtx = useContext(AuthContext);
+  const { isLoggedIn, logout } = authCtx;
+
+  const logoutBtnClickHandler = () => {
+    logout();
+  };
 
   const activeClassName = "text-green-300";
   const styleNavLink = ({ isActive }) =>
@@ -35,6 +39,7 @@ const Header = () => {
               <button
                 to="/auth"
                 className="border border-green-300 py-1 px-2 rounded"
+                onClick={logoutBtnClickHandler}
               >
                 Logout
               </button>
