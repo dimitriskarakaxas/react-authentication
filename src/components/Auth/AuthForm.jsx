@@ -58,7 +58,16 @@ const AuthForm = () => {
         }
       })
       .then((data) => {
-        authCtx.login(data.idToken);
+        // const expirationTime = new Date(
+        //   new Date().getTime() + +data.expiresIn * 1000
+        // );
+        // console.log(new Date().getTime());
+        const currentDate = new Date();
+        const currentDateMilliseconds = currentDate.getTime();
+        const expirationTime = new Date(
+          currentDateMilliseconds + +data.expiresIn * 1000
+        );
+        authCtx.login(data.idToken, expirationTime);
         navigate("/");
       })
       .catch((err) => {
